@@ -1,7 +1,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-1">
-            <img width="50px" height="50px" src="images/images4.jpg" class="img-circle">
+            <a href="index.html">
+                <img width="65px" height="65px" src="images/images4.jpg" class="img-circle">
+            </a>
         </div>       
         <form name="userForm" ng-submit="searchRedirect(searchTerm)" novalidate>                       
             <div class="col-lg-8 input-group form-group">                            
@@ -15,30 +17,28 @@
     </div>
 </div>
 
-<div ng-hide="jumboVisible" class="jumbotron-less">
-    <!--<div class="container">-->
-    <div class="row" style="padding-top: 10px">    
+<div ng-hide="jumboVisible" class="jumbotron-less">    
+    <div class="row">    
         <div class="col-lg-1"></div>
-        <div ng-hide="imageVisible" class="col-lg-2">                
+        <div ng-hide="imageVisible" class="col-lg-2" style="padding-top: 15px;">                
             <a href="#" class="thumbnail">
                 <img ng-src="{{response.Image}}" alt="...">
             </a>
         </div>
         <div class="col-lg-4">                                        
             <h3><b>{{response.Heading}}</b></h3>
-            <p class="lead">{{response.AbstractText| limitTo: 200}}</p>                                        
+            <p class="lead">{{response.AbstractText| atCharacterLimit}}</p>                                        
         </div>
         <div class="col-lg-1">
         </div>
-        <div class="col-lg-4">                                        
+        <div class="col-lg-4" style="padding-top: 15px;">                                        
             <ul ng-hide="rtVisible" class="list-group">
                 <li class="list-group-item"><b>Related Topics</b></li>
                 <li class="list-group-item" ng-repeat="RelatedTopic in response.RelatedTopics| limitTo: 4">
-                    <a href="" ng-click="searchRedirect(RelatedTopic.Text)">{{RelatedTopic.Text| limitTo: 40}}</a>
+                    <a href="" ng-click="searchRedirect(RelatedTopic.Text)">{{RelatedTopic.Text| rtCharacterLimit}}</a>
                 </li>
             </ul>
-        </div>
-        <!--</div>-->
+        </div>        
     </div>
 </div>
 
